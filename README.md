@@ -16,16 +16,6 @@ To get this set up on your machine:
 7. In your browser, open localhost:8000 to see the application
 
 
-Read the documentation about the Django admin.
-
-You’ll need to create a customized ModelAdmin class for the Post and Category models.
-
-And you’ll need to create an InlineModelAdmin to represent Categories on the Post admin view.
-
-Finally, you’ll need to exclude the ‘posts’ field from the form in your Category admin.
-
-All told, those changes should not require more than about 15 total lines of code. The trick of course is reading and finding out which fifteen lines to write.
-
 #Changes made since the end of Session 08:
 
 *myblog/admin.py*
