@@ -37,5 +37,5 @@ All told, those changes should not require more than about 15 total lines of cod
 
 *myblog/models.py*
 
-1. Added a metaclass to Categories to make the name in the admin appears as "Categories" instead of "Categorys"
+1. Added a metaclass to Categories to make the name in the admin appear as "Categories" instead of "Categorys"
 2. Added __unicode__ methods to both Post and Category classes
