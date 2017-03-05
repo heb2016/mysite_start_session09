@@ -6,7 +6,7 @@ To get this set up on your machine:
 
 1. Fork and clone the repository
 2. Open a command prompt and activate your djangoenv
-3. Navigate to your mysite directory
+3. Navigate to the directory containing manage.py
 4. Create a database using the model
 `$ python manage.py migrate`
 5. Create a super user - follow the instructions to finish creating super user
