@@ -12,6 +12,9 @@ class Post(models.Model):
     def __unicode__(self):
         return self.title
 
+    def __str__(self):
+        return self.title
+
 class Category(models.Model):
     name = models.CharField(max_length=128)
     description = models.TextField(blank=True)
@@ -22,4 +25,7 @@ class Category(models.Model):
         verbose_name_plural = 'Categories'
 
     def __unicode__(self):
+        return self.name
+
+    def __str__(self):
         return self.name
