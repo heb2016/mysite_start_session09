@@ -29,3 +29,8 @@ To get this set up on your machine:
 
 1. Added a metaclass to Categories to make the name in the admin appear as "Categories" instead of "Categorys"
 2. Added __unicode__ methods to both Post and Category classes
+
+Contributors:
+Paul
+Spencer
+Beatrice
