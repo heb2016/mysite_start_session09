@@ -8,6 +8,7 @@ from .forms import PostForm
 from django.shortcuts import redirect
 from django.utils import timezone
 
+
 def stub_view(request, *args, **kwargs):
     body = "Stub View\n\n"
     if args:
@@ -18,11 +19,13 @@ def stub_view(request, *args, **kwargs):
         body += "\n".join(["\t%s: %s" % i for i in kwargs.items()])
     return HttpResponse(body, content_type="text/plain")
 
+
 def list_view(request):
     published = Post.objects.exclude(published_date__exact=None)
     posts = published.order_by('-published_date')
     context = {'posts': posts}
     return render(request, 'list.html', context)
+
 
 def detail_view(request, post_id):
     published = Post.objects.exclude(published_date__exact=None)
@@ -33,7 +36,10 @@ def detail_view(request, post_id):
     context = {'post': post}
     return render(request, 'detail.html', context)
 
+
 def post_new(request):
+    form = PostForm()
+    context = {'form': form}
     if request.method == "POST":
         form = PostForm(request.POST)
         if form.is_valid():
@@ -41,7 +47,6 @@ def post_new(request):
             post.author = request.user
             post.published_date = timezone.now()
             post.save()
-            return redirect('post_detail', pk=post.pk)
+            return redirect('blog_index')
     else:
-        form = PostForm()
-    return render(request, 'post_edit.html', {'form': form})
+        return render(request, 'post_edit.html', context)

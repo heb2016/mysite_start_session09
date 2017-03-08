@@ -17,11 +17,10 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.conf.urls import include
 from django.contrib.auth.views import login, logout
-from myblog import views
+
 urlpatterns = [
     url(r'^', include('myblog.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^login/$', login, {'template_name': 'login.html'}, name="login"),
     url(r'^logout/$', logout, {'next_page': '/'}, name="logout"),
-    url(r'^post/new/$', views.post_new, name='post_new'),
 ]
