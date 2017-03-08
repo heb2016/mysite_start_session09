@@ -1,2 +1,15 @@
-*.db
+# Compiled Python
 *.pyc
+
+*.egg
+*.egg-info
+
+# SQLite db
+*.sqlite
+
+# Mac
+.DS_Store
+
+# PyCharm
+.idea/*
+.idea
