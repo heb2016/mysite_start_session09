@@ -17,7 +17,7 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.conf.urls import include
 from django.contrib.auth.views import login, logout
-from . import views
+from myblog import views
 urlpatterns = [
     url(r'^', include('myblog.urls')),
     url(r'^admin/', admin.site.urls),
