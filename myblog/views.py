@@ -5,6 +5,8 @@ from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.template import RequestContext, loader
 from myblog.models import Post
 from .forms import PostForm
+from django.shortcuts import redirect
+from time import *
 
 def stub_view(request, *args, **kwargs):
     body = "Stub View\n\n"
@@ -32,5 +34,14 @@ def detail_view(request, post_id):
     return render(request, 'detail.html', context)
 
 def post_new(request):
-    form = PostForm()
-    return render(request, 'post_edit.html', {'form': form})
+    if request.method == 'POST':
+        form = PostForm(request.POST)
+    if form.is_valid():
+        post = form.save(commit=False)
+        post.author = request.user
+        post.published_date = timezone.now()
+        post.save()
+        return redirect('post_detail', pk=post.pk)
+    else:
+        form = PostForm()
+    return render(request, 'blog/post_edit.html', {'form': form})
