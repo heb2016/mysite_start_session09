@@ -33,4 +33,4 @@ def detail_view(request, post_id):
 
 def post_new(request):
     form = PostForm()
-    return render(request, 'blog/post_edit.html', {'form': form})
+    return render(request, 'post_edit.html', {'form': form})
