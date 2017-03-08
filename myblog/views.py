@@ -6,7 +6,7 @@ from django.template import RequestContext, loader
 from myblog.models import Post
 from .forms import PostForm
 from django.shortcuts import redirect
-from time import *
+from django.utils import timezone
 
 def stub_view(request, *args, **kwargs):
     body = "Stub View\n\n"
