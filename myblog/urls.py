@@ -1,6 +1,6 @@
 from django.conf.urls import url
 from myblog.views import stub_view
-from myblog.views import list_view, detail_view, post_new
+from myblog.views import list_view, detail_view, post_new , post_edit
 
 
 urlpatterns = [
@@ -14,6 +14,6 @@ urlpatterns = [
         post_new,
         name='post_new'),
     url(r'^post/(?P<pk>\d+)/edit/$',
-        views.post_edit,
+        post_edit,
         name='post_edit'),
 ]
