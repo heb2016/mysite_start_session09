@@ -36,10 +36,9 @@ def detail_view(request, post_id):
     context = {'post': post}
     return render(request, 'detail.html', context)
 
+ 
 
 def post_new(request):
-    form = PostForm()
-    context = {'form': form}
     if request.method == "POST":
         form = PostForm(request.POST)
         if form.is_valid():
@@ -47,9 +46,14 @@ def post_new(request):
             post.author = request.user
             post.published_date = timezone.now()
             post.save()
-            return redirect('blog_index')
+            published = Post.objects.exclude(published_date__exact=None)
+            posts = published.order_by('-published_date')
+            context = {'posts': posts}
+            return render(request, 'list.html', context)
+            # return redirect('detail.html', pk=post.pk)
     else:
-        return render(request, 'post_edit.html', context)
+        form = PostForm()
+    return render(request, 'post_edit.html', {'form': form})
 
 
 def post_edit(request, pk):
